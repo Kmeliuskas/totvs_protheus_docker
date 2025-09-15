@@ -1,0 +1,150 @@
+networks:
+  network:
+    ipam:
+      driver: "default"
+      config:
+        - subnet: "172.19.0.0/24"
+          gateway: "172.19.0.1"
+
+services:
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    #image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: totvs_mssql
+    user: root
+    restart: always
+    ports:
+      - "1433:1433"
+    environment:
+      MSSQL_SA_PASSWORD: "MicrosoftSQL2022"
+      #SA_PASSWORD: "MicrosoftSQL2019"
+      ACCEPT_EULA: "Y"
+    networks:
+      - network
+    volumes:
+      - ./volume/mssql/data:/var/opt/mssql/data
+
+  licenseserver:
+    image: matteokme/totvsprotheus2410:licenseserver2410
+    #image: licenseserver2410:licenseserver2410
+    container_name: totvs_licenseserver
+    build:
+      context: ./licenseserver
+      dockerfile: dockerfile
+    restart: always
+    ports:
+      - "2234:2234"
+      - "5555:5555"
+      - "8020:8020"
+    environment:
+      - LICENSE_TCP_PORT=2234
+      - LICENSE_CONSOLEFILE=/totvs/licenseserver/bin/appserver/licenseserver.log
+      - LICENSE_PORT=5555
+      - LICENSE_WEBAPP_PORT=8020
+    networks:
+      - network
+
+  dbaccess:
+    image: matteokme/totvsprotheus2410:dbaccess2410
+    #image: dbaccess2410:dbaccess2410
+    #image: juliansantosinfo/totvs_dbaccess:latest
+    container_name: totvs_dbaccess
+    build:
+      context: ./dbaccess
+      dockerfile: dockerfile
+    restart: always
+    ports:
+      - "7890:7890"
+      - "7891:7891"
+    environment:
+      - DATABASE_PASSWORD=MicrosoftSQL2022
+      - DBACCESS_LICENSE_SERVER=totvs_licenseserver
+      - DBACCESS_LICENSE_PORT=5555
+      - DBACCESS_CONSOLEFILE=/totvs/dbaccess/multi/dbconsole.log
+    networks:
+      - network
+    depends_on:
+      - mssql
+      - licenseserver
+
+  appserver:
+    image: matteokme/totvsprotheus2410:appserver2410
+    #image: appserver2410:appserver2410
+    container_name: totvs_appserver
+    build:
+      context: ./appserver
+      dockerfile: dockerfile
+    restart: always
+    ports:
+      - "1234:1234"
+      - "12345:12345"
+      - "8088:8088"
+    environment:
+      - APPSERVER_RPO_CUSTOM=/totvs/protheus/apo/custom/custom.rpo
+      - APPSERVER_DBACCESS_DATABASE=MSSQL
+      - APPSERVER_DBACCESS_SERVER=totvs_dbaccess
+      - APPSERVER_DBACCESS_PORT=7890
+      - APPSERVER_DBACCESS_ALIAS=protheus
+      - APPSERVER_CONSOLEFILE=/totvs/protheus/bin/appserver/appserver.log
+      - APPSERVER_MULTIPROTOCOLPORTSECURE=0
+      - APPSERVER_MULTIPROTOCOLPORT=1
+      - APPSERVER_LICENSE_SERVER=totvs_licenseserver
+      - APPSERVER_LICENSE_PORT=5555
+      - APPSERVER_PORT=1234
+      - APPSERVER_WEB_PORT=12345
+      - APPSERVER_WEB_MANAGER=8088
+    networks:
+      - network
+    volumes:
+      # Para utilizar arquivos personalizados de configuração (appserver.ini) e log (appserver.log), 
+      # crie os diretórios e arquivos necessários e descomente as linhas abaixo.
+      # - ./volume/appserver/appserver.ini:/totvs/protheus/bin/appserver/appserver.ini
+      # - ./volume/appserver/appserver.log:/totvs/protheus/bin/appserver/appserver.log
+      - ./volume/appserver/apo:/totvs/protheus/apo
+      - ./volume/protheus_data:/totvs/protheus_data
+    depends_on:
+      - licenseserver
+      - dbaccess
+
+  apprest:
+    image: matteokme/totvsprotheus2410:apprest2410
+    container_name: totvs_apprest
+    build:
+      context: ./apprest
+      dockerfile: dockerfile
+    profiles:
+      - manual
+    restart: always
+    ports:
+      - "1235:1234"
+      - "12355:12345"
+      - "8080:8080"
+      - "8089:8088"
+    environment:
+      - APPSERVER_RPO_CUSTOM=/totvs/protheus/apo/custom/custom.rpo
+      - APPSERVER_DBACCESS_DATABASE=MSSQL
+      - APPSERVER_DBACCESS_SERVER=totvs_dbaccess
+      - APPSERVER_DBACCESS_PORT=7890
+      - APPSERVER_DBACCESS_ALIAS=protheus
+      - APPSERVER_CONSOLEFILE=/totvs/protheus/bin/appserver/appserver.log
+      - APPSERVER_MULTIPROTOCOLPORTSECURE=0
+      - APPSERVER_MULTIPROTOCOLPORT=1
+      - APPSERVER_LICENSE_SERVER=totvs_licenseserver
+      - APPSERVER_LICENSE_PORT=5555
+      - APPSERVER_PORT=1234
+      - APPSERVER_WEB_PORT=12345
+      - APPSERVER_REST_PORT=8080
+      - APPSERVER_WEB_MANAGER=8088
+    networks:
+      - network
+    volumes:
+      # Para utilizar arquivos personalizados de configuração (appserver.ini) e log (appserver.log), 
+      # crie os diretórios e arquivos necessários e descomente as linhas abaixo.
+      # - ./volume/apprest/appserver.ini:/totvs/protheus/bin/appserver/appserver.ini
+      # - ./volume/apprest/appserver.log:/totvs/protheus/bin/appserver/appserver.log
+      - ./volume/apprest/apo:/totvs/protheus/apo
+      - ./volume/protheus_data:/totvs/protheus_data
+    depends_on:
+      - licenseserver
+      - dbaccess
