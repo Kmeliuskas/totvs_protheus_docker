@@ -41,6 +41,22 @@ Para começar com este projeto, siga os passos abaixo:
 git clone https://github.com/Kmeliuskas/totvs_protheus2410_docker
 cd totvs_protheus2410_docker
 ```
+2. Inicie os containers:
+```bash
+docker compose -p totvs up -d
+```
+ATENÇÃO
+Após você iniciar os containers com o comando acima
+cria toda a empresa teste e depois pode rodar o comando:
+```bash
+docker compose -p totvs --profile manual up -d apprest
+```
+Para podermos iniciar o serviço do APPREST que ele não inicia sozinho está configurado para iniciar manual
+
+
+
+
+
 
 
 
