@@ -45,7 +45,7 @@ cd totvs_protheus2410_docker
 ```bash
 docker compose -p totvs up -d
 ```
-ATENÇÃO
+### ATENÇÃO
 Após você iniciar os containers com o comando acima
 cria toda a empresa teste e depois pode rodar o comando:
 ```bash
