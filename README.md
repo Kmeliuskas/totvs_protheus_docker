@@ -34,8 +34,13 @@ Mac:
   1. Docker Desktop: Instale o Docker Desktop para macOS: https://docs.docker.com/desktop/mac/install/
 
 ## Início Rápido
+Para começar com este projeto, siga os passos abaixo:
 
-
+1. Clone este repositório e acesse o diretório do projeto:
+```bash
+git clone https://github.com/Kmeliuskas/totvs_protheus2410_docker
+cd totvs_protheus2410_docker
+```
 
 
 
