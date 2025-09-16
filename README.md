@@ -75,11 +75,20 @@ Após iniciar todos os containers, você pode acessar as aplicações TOTVS atra
 `licenseserver`
 
 | Variável de Ambiente | Conteúdo Padrão | Descrição |
-|----------------------|-----------------|-------------------------------------------------------------------------------------------------------------------|
+|----------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | `LICENSE_TCP_PORT`    | `2234`                                                 | Define a porta TCP para <br> comunicação com o <br> servidor de licenças. |
 | `LICENSE_CONSOLEFILE` | `/totvs/licenseserver/bin/appserver/licenseserver.log` | Define o caminho para o <br> arquivo de log do servidor <br> de licenças. |
 | `LICENSE_PORT`        | `5555`                                                 | Define a porta principal do <br> servidor de licenças. |
 | `LICENSE_WEBAPP_PORT` | `8020`                                                 | Define a porta para a <br> interface de <br> monitoramento web do <br> servidor de licenças. |
+
+`dbaccess`
+
+| Variável de Ambiente | Conteúdo Padrão | Descrição |
+|----------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| `DATABASE_PASSWORD`       | `MicrosoftSQL2022`                     | Senha para acesso ao banco de dados <br> (Mesma definida no container de banco <br> de dados do MSSQL). |
+| `DBACCESS_LICENSE_SERVER` | `totvs_licenseserver`                  | Define o nome do host do servidor de <br> licenças. |
+| `DBACCESS_LICENSE_PORT`   | `5555`                                 | Define a porta do servidor de licenças. |
+| `DBACCESS_CONSOLEFILE`    | `/totvs/dbaccess/multi/dbconsole.log`  | Define o caminho para o arquivo de log <br> do dbaccess. |
 
 
 
