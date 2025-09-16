@@ -53,7 +53,30 @@ docker compose -p totvs --profile manual up -d apprest
 ```
 Para podermos iniciar o serviço do APPREST que ele não inicia sozinho está configurado para iniciar manual
 
+Após a inicialização, acesse a aplicação em seu navegador através do endereço: http://localhost:12345 (Smartclient Web).
 
+I. **Acesse a aplicação no endereço indicado e realize a criação da empresa de teste.**
+II. **Após concluir a criação da empresa, inicie o serviço `apprest` manualmente.**
+
+Informações adicionais sobre como iniciar o serviço `apprest` manualmente podem ser encontradas na documentação.
+
+## Docker Compose
+O arquivo `docker-compose.yml` orquestra os containers e define as variáveis de ambiente, portas e volumes necessários por componente.
+
+# Observações
+- As portas expostas em cada container podem ser modificadas conforme necessário.
+- As senhas definidas nos comandos acima são exemplos e devem ser alteradas para garantir a segurança do ambiente.
+- As variáveis de ambiente estão disponiveis em uma sessão a parte nesta documentação.
+
+# Próximos Passos
+Após iniciar todos os containers, você pode acessar as aplicações TOTVS através das portas configuradas. Consulte a documentação oficial da TOTVS para obter mais informações sobre a utilização dos produtos.
+
+# Variáveis de Ambiente
+`licenseserver`
+
+| Variável de Ambiente | Conteúdo Padrão | Descrição |
+|----------------------|-----------------|-----------|
+|`LICENSE_TCP_PORT`    | `2234`          | `Define a porta TCP para comunicação com o servidor de licenças.` |
 
 
 
