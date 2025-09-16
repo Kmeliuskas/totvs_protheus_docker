@@ -15,9 +15,6 @@ Este repositório contém três principais componentes:
 ## Aviso Legal e Instruções de Uso
 Este repositório é um projeto independente e não possui qualquer afiliação com a TOTVS S/A. O código e as imagens aqui disponibilizados são destinados exclusivamente para fins de desenvolvimento e testes. Não utilize este projeto em ambiente de produção.
 
-## Licença MIT
-Ao utilizar este repositório, você concorda com os termos da licença MIT.
-
 ## Requisitos de Sistema: Ambiente de Desenvolvimento
 Certifique-se de ter os seguintes pré-requisitos instalados em seu sistema:
 
@@ -84,11 +81,55 @@ Após iniciar todos os containers, você pode acessar as aplicações TOTVS atra
 `dbaccess`
 
 | Variável de Ambiente | Conteúdo Padrão | Descrição |
-|----------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------|
+|----------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | `DATABASE_PASSWORD`       | `MicrosoftSQL2022`                     | Senha para acesso ao banco de dados <br> (Mesma definida no container de banco <br> de dados do MSSQL). |
 | `DBACCESS_LICENSE_SERVER` | `totvs_licenseserver`                  | Define o nome do host do servidor de <br> licenças. |
 | `DBACCESS_LICENSE_PORT`   | `5555`                                 | Define a porta do servidor de licenças. |
 | `DBACCESS_CONSOLEFILE`    | `/totvs/dbaccess/multi/dbconsole.log`  | Define o caminho para o arquivo de log <br> do dbaccess. |
+
+`appserver`
+
+| Variável de Ambiente | Conteúdo Padrão | Descrição |
+|----------------------|-----------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `APPSERVER_RPO_CUSTOM`              | `/totvs/protheus/apo/custom.rpo`              | Define o caminho <br> para o arquivo de <br> RPO customizado do <br> AppServer. |
+| `APPSERVER_DBACCESS_DATABASE`       | `MSSQL`                                       | Define o tipo de <br> banco de dados <br> utilizado (ex: MSSQL, <br> Oracle). |
+| `APPSERVER_DBACCESS_SERVER`         | `totvs_dbaccess`                              | Define o nome do <br> host do serviço <br> DBAccess. |
+| `APPSERVER_DBACCESS_PORT`           | `7890`                                        | Define a porta do <br> serviço DBAccess. |
+| `APPSERVER_DBACCESS_ALIAS`          | `protheus`                                    | Define o alias para a <br> conexão com o banco <br> de dados. |
+| `APPSERVER_CONSOLEFILE`             | `/totvs/protheus/bin/appserver/appserver.log` | Define o caminho <br> para o arquivo de log <br> do AppServer. |
+| `APPSERVER_MULTIPROTOCOLPORTSECURE` | `0`                                           | Define a porta segura <br> para o protocolo <br> múltiplo (0 desativa a <br> porta segura). |
+| `APPSERVER_MULTIPROTOCOLPORT`       | `1`                                           | Define a porta para o <br> protocolo múltiplo. |
+| `APPSERVER_LICENSE_SERVER`          | `totvs_licenseserver`                         | Define o nome do <br> host do servidor de <br> licenças. |
+| `APPSERVER_LICENSE_PORT`            | `5555`                                        | Define a porta do <br> servidor de licenças. |
+| `APPSERVER_PORT`                    | `1234`                                        | Define a porta <br> principal do <br> AppServer. |
+| `APPSERVER_WEB_PORT`                | `12345`                                       | Define a porta para a <br> interface web do <br> AppServer. |
+| `APPSERVER_WEB_MANAGER`             | `8088`                                        | Define a porta para a <br> interface web de <br> gerenciamento do <br> AppServer.  |
+
+`apprest`
+
+| Variável de Ambiente | Conteúdo Padrão | Descrição |
+|----------------------|-----------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `APPSERVER_RPO_CUSTOM`              | `/totvs/protheus/apo/custom.rpo`              | Define o caminho <br> para o arquivo de <br> RPO customizado do <br> AppServer. |
+| `APPSERVER_DBACCESS_DATABASE`       | `MSSQL`                                       | Define o tipo de <br> banco de dados <br> utilizado (ex: MSSQL, <br> Oracle). |
+| `APPSERVER_DBACCESS_SERVER`         | `totvs_dbaccess`                              | Define o nome do <br> host do serviço <br> DBAccess. |
+| `APPSERVER_DBACCESS_PORT`           | `7890`                                        | Define a porta do <br> serviço DBAccess. |
+| `APPSERVER_DBACCESS_ALIAS`          | `protheus`                                    | Define o alias para a <br> conexão com o banco <br> de dados. |
+| `APPSERVER_CONSOLEFILE`             | `/totvs/protheus/bin/appserver/appserver.log` | Define o caminho <br> para o arquivo de log <br> do AppServer. |
+| `APPSERVER_MULTIPROTOCOLPORTSECURE` | `0`                                           | Define a porta segura <br> para o protocolo <br> múltiplo (0 desativa a <br> porta segura). |
+| `APPSERVER_MULTIPROTOCOLPORT`       | `1`                                           | Define a porta para o <br> protocolo múltiplo. |
+| `APPSERVER_LICENSE_SERVER`          | `totvs_licenseserver`                         | Define o nome do <br> host do servidor de <br> licenças. |
+| `APPSERVER_LICENSE_PORT`            | `5555`                                        | Define a porta do <br> servidor de licenças. |
+| `APPSERVER_PORT`                    | `1234`                                        | Define a porta <br> principal do <br> AppServer. |
+| `APPSERVER_WEB_PORT`                | `12345`                                       | Define a porta para a <br> interface web do <br> AppServer. |
+| `APPSERVER_REST_PORT`               | `8080`                                        | Define a porta para <br> serviço REST do <br> AppServer. |
+| `APPSERVER_WEB_MANAGER`             | `8088`                                        | Define a porta para a <br> interface web de <br> gerenciamento do <br> AppServer.  |
+
+## Licença MIT
+Ao utilizar este repositório, você concorda com os termos da licença MIT consulte o arquivo LICENSE para detalhes.
+
+## Contribuindo
+Se você gostaria de contribuir para este projeto, por favor, forque-o e envie uma solicitação de pull com suas alterações.
+
 
 
 
