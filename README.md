@@ -76,9 +76,7 @@ Após iniciar todos os containers, você pode acessar as aplicações TOTVS atra
 
 | Variável de Ambiente | Conteúdo Padrão | Descrição |
 |----------------------|-----------------|-----------|
-|`LICENSE_TCP_PORT`    | `2234`          | `Define a porta TCP para 
-                                            comunicação com o 
-                                            servidor de licenças.` |
+|`LICENSE_TCP_PORT`    | `2234`          | `Define a porta TCP para <br> comunicação com o <br> servidor de licenças.` |
 
 
 
