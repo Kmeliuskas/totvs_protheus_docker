@@ -5,7 +5,7 @@ Este repositório contém a implementação da aplicação do ERP TOTVS Protheus
 O sistema de ERP Protheus é uma solução de software complexa que requer configurações e dependências específicas para funcionar. Este projeto visa simplificar a instalação, configuração e execução do Protheus ao containerizar-o utilizando Docker.
 
 ## Componentes
-Este repositório contém três principais componentes:
+Este repositório contém quatro principais componentes:
 
 1. appserver: O servidor de aplicação principal do sistema ERP Protheus.
 2. apprest: O servidor de aplicação REST do sistema ERP Protheus.
@@ -42,20 +42,30 @@ cd totvs_protheus2410_docker
 ```bash
 docker compose -p totvs up -d
 ```
-### ATENÇÃO
-Após você iniciar os containers com o comando acima
-cria toda a empresa teste e depois pode rodar o comando:
+3. Após isso realizar a conexão do banco de dados pode ser com o SQL Server Management Studio 20 com as seguintes opções:
+ - Tipo de servidor: `Mecanismo de Banco de Dados`
+ - Nome do servidor: `localhost,1433`
+ - Autenticação:     `Autenticação do SQL Server`
+ - Logon:            `sa`
+ - Senha:            `(SENHA DEVE SER COLOCADA CONFORME CONFIGURADA NO DOCKER-COMPOSE.YAML)`
+ - Criptografia:     `Opcional`
+   E marca a box:    `Certificado do Servidor Confiável`
+   
+4. Após isso pode criar um banco de dados chamado `protheus`.
+
+5. Após a configuração, acesse a aplicação em seu navegador através do endereço: http://localhost:12345 (Smartclient Web).
+
+6. Verificar tambem para realizar o download do `Web Agente` localizado no canto superior direito, realize a instalação conforme o seu SO.
+
+7. Utiliza o ambiente SIGACFG e pode proseguir normalmente.
+ - Primeiro acesso pode colocar:
+   - Login: admin
+   - Senha: ' ' (Espaçamento em branco)
+
+8 . Inicie o serviço do APPREST após a criação da empresa Teste pois ele está configurado para inicial manualmente para não ocorrer problemas.
 ```bash
 docker compose -p totvs --profile manual up -d apprest
 ```
-Para podermos iniciar o serviço do APPREST que ele não inicia sozinho está configurado para iniciar manual
-
-Após a inicialização, acesse a aplicação em seu navegador através do endereço: http://localhost:12345 (Smartclient Web).
-
-I. **Acesse a aplicação no endereço indicado e realize a criação da empresa de teste.**
-II. **Após concluir a criação da empresa, inicie o serviço `apprest` manualmente.**
-
-Informações adicionais sobre como iniciar o serviço `apprest` manualmente podem ser encontradas na documentação.
 
 ## Docker Compose
 O arquivo `docker-compose.yml` orquestra os containers e define as variáveis de ambiente, portas e volumes necessários por componente.
