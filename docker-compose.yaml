@@ -1,3 +1,4 @@
+version: '3'  # Adicione a versão, se não estiver especificada
 networks:
   network:
     ipam:
@@ -7,7 +8,6 @@ networks:
           gateway: "172.19.0.1"
 
 services:
-
   mssql:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: totvs_mssql
@@ -16,12 +16,14 @@ services:
     ports:
       - "1433:1433"
     environment:
-      MSSQL_SA_PASSWORD: "MicrosoftSQL2022"
-      ACCEPT_EULA: "Y"
+      - MSSQL_SA_PASSWORD=MicrosoftSQL2022
+      - ACCEPT_EULA=Y
+      - TZ=America/Sao_Paulo  # Adiciona o fuso horário
     networks:
       - network
     volumes:
       - ./volume/mssql/data:/var/opt/mssql/data
+      - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
 
   licenseserver:
     image: matteokme/totvsprotheus2410:licenseserver2410
@@ -39,8 +41,11 @@ services:
       - LICENSE_CONSOLEFILE=/totvs/licenseserver/bin/appserver/licenseserver.log
       - LICENSE_PORT=5555
       - LICENSE_WEBAPP_PORT=8020
+      - TZ=America/Sao_Paulo  # Adiciona o fuso horário
     networks:
       - network
+    volumes:
+      - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
 
   dbaccess:
     image: matteokme/totvsprotheus2410:dbaccess2410
@@ -57,8 +62,11 @@ services:
       - DBACCESS_LICENSE_SERVER=totvs_licenseserver
       - DBACCESS_LICENSE_PORT=5555
       - DBACCESS_CONSOLEFILE=/totvs/dbaccess/multi/dbconsole.log
+      - TZ=America/Sao_Paulo  # Adiciona o fuso horário
     networks:
       - network
+    volumes:
+      - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
     depends_on:
       - mssql
       - licenseserver
@@ -88,15 +96,13 @@ services:
       - APPSERVER_PORT=1234
       - APPSERVER_WEB_PORT=12345
       - APPSERVER_WEB_MANAGER=8088
+      - TZ=America/Sao_Paulo  # Adiciona o fuso horário
     networks:
       - network
     volumes:
-      # Para utilizar arquivos personalizados de configuração (appserver.ini) e log (appserver.log), 
-      # crie os diretórios e arquivos necessários e descomente as linhas abaixo.
-      # - ./volume/appserver/appserver.ini:/totvs/protheus/bin/appserver/appserver.ini
-      # - ./volume/appserver/appserver.log:/totvs/protheus/bin/appserver/appserver.log
       - ./volume/appserver/apo:/totvs/protheus/apo
       - ./volume/protheus_data:/totvs/protheus_data
+      - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
     depends_on:
       - licenseserver
       - dbaccess
@@ -130,16 +136,13 @@ services:
       - APPSERVER_WEB_PORT=12345
       - APPSERVER_REST_PORT=8080
       - APPSERVER_WEB_MANAGER=8088
+      - TZ=America/Sao_Paulo  # Adiciona o fuso horário
     networks:
       - network
     volumes:
-      # Para utilizar arquivos personalizados de configuração (appserver.ini) e log (appserver.log), 
-      # crie os diretórios e arquivos necessários e descomente as linhas abaixo.
-      # - ./volume/apprest/appserver.ini:/totvs/protheus/bin/appserver/appserver.ini
-      # - ./volume/apprest/appserver.log:/totvs/protheus/bin/appserver/appserver.log
       - ./volume/apprest/apo:/totvs/protheus/apo
       - ./volume/protheus_data:/totvs/protheus_data
+      - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
     depends_on:
       - licenseserver
       - dbaccess
-
