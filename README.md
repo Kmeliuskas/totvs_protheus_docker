@@ -37,7 +37,7 @@ Mac:
 ## Início Rápido
 Para começar com este projeto, siga os passos abaixo:
 
-##ATENÇÃO
+## ATENÇÃO
 Caso você esteja usando a release 2510 pode somente acessar o localhost:12345
 com as seguintes configurações:
   **Release 12.1.2510**
