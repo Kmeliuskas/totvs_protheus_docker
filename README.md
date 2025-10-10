@@ -52,18 +52,14 @@ Para começar com este projeto, siga os passos abaixo:
 2. Inicie os containers:
 
     ```bash
-    docker compose -p totvs up
+    docker compose -p totvs up -d
     ```
 
     Após a inicialização, acesse a aplicação em seu navegador através do endereço: <http://localhost:12345> (Smartclient Web).
 
-    **Release 12.1.2410**
+      **Release 12.1.2510**
       - **Usuário:** admin
-      - **Senha:** admin
-
-    **Release 12.1.2510**
-      - **Usuário:** admin
-      - **Senha:** Docker@123
+      - **Senha:** Admin@123
 
     **Informações adicionais sobre como iniciar o serviço `apprest` manualmente podem ser encontradas na documentação.**
 
