@@ -40,9 +40,9 @@ Para começar com este projeto, siga os passos abaixo:
 ## ATENÇÃO
 Caso você esteja usando a release 2510 pode somente acessar o [localhost:12345](http://localhost:12345)
 com as seguintes configurações:
-  **Release 12.1.2510**
-    - **Usuário:** admin
-    - **Senha:** Admin@123
+**Release 12.1.2510**
+  - **Usuário:** admin
+  - **Senha:** Admin@123
 
 1. Clone este repositório e acesse o diretório do projeto:
 ```bash
