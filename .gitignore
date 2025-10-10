@@ -1,0 +1,6 @@
+**/totvs/
+temp/
+volume/
+.venv/
+**/data/
+data.tar.gz
