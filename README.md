@@ -2,6 +2,10 @@
 ## Overview
 Este repositório contém a implementação da aplicação do ERP TOTVS Protheus utilizando containers Docker.
 
+#Para facilitar foi criado 2 branchs para os ajuste
+release_1.1.2410 -> Para as configurações da 2410 pode seguir corretamente esse README.MD
+release_1.1.2510 -> Facilita o acesso, pode acessar somente a url localhost:12345 e colocar usuário e senha setados nesse README.MD
+
 O sistema de ERP Protheus é uma solução de software complexa que requer configurações e dependências específicas para funcionar. Este projeto visa simplificar a instalação, configuração e execução do Protheus ao containerizar-o utilizando Docker.
 
 ## Componentes
@@ -32,6 +36,13 @@ Mac:
 
 ## Início Rápido
 Para começar com este projeto, siga os passos abaixo:
+
+##ATENÇÃO
+Caso você esteja usando a release 2510 pode somente acessar o localhost:12345
+com as seguintes configurações:
+  **Release 12.1.2510**
+    - **Usuário:** admin
+    - **Senha:** Admin@123
 
 1. Clone este repositório e acesse o diretório do projeto:
 ```bash
