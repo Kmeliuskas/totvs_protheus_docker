@@ -1,0 +1,25 @@
+FROM oraclelinux:8-slim
+
+LABEL version="24.1.1.0"
+LABEL description="TOTVS DBAccess" 
+LABEL maintainer="Matteo Kmeliuskas <matteokmeliuskas@gmail.com>"
+
+ENV DATABASE_PASSWORD=MicrosoftSQL2019
+ENV DBACCESS_LICENSE_SERVER=totvs_licenseserver
+ENV DBACCESS_LICENSE_PORT=5555
+ENV DBACCESS_CONSOLEFILE=/totvs/dbaccess/multi/dbconsole.log
+
+COPY ./totvs /totvs
+
+RUN cp /totvs/resources/etc/* /etc/ \
+    && cp -r /totvs/resources/opt/* /opt/ \
+    && chmod +x /totvs/entrypoint.sh \
+    && microdnf update -y \
+    && microdnf install gzip \
+    && microdnf install iputils \
+    && microdnf install nano \
+    && microdnf install unixODBC-devel
+
+ENTRYPOINT [ "/totvs/entrypoint.sh" ]
+
+EXPOSE 7890 7891
