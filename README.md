@@ -33,6 +33,35 @@ Mac:
 ## Início Rápido
 Para começar com este projeto, siga os passos abaixo:
 
+## Atenção!!!
+Caso quando for subir os containers e por exemplo o container do LicenserServer ele der um erro no LOG que seria:
+
+Please wait...
+Numero maximo de arquivos insuficiente. Limite atual: -1
+[ERROR][SERVER] OPERATIONAL LIMITS ARE INSUFFICIENT, CHECK THE INSTALATION PROCEDURES AS WELL AS 'ULIMIT' CONFIGURATION
+
+Pode fazer as seguintes configurações:
+1 - Executa o ubuntu da da sua máquina local por exemplo a imagem do Ubunto do Windows WSL
+2 - Vai ser necessário entrar nos seguintes arquivos:
+  - sudo nano /etc/pam.d/common-session
+  - sudo nano /etc/security/limits.conf
+  - sudo nano /etc/sysctl.conf
+
+1)Dentro do `/etc/pam.d/common-session` Pode ir ao final do arquivo e colocar a seguinte linha:
+- session required                        pam_limits.so
+
+2)Dentro do `/etc/security/limits.conf` Pode ir ao final do arquivo e colocar a seguinte linha:
+- *                hard   nofile           1048576
+- *                soft   nofile           1048576
+ 
+3)Dentro do `/etc/sysctl.conf` Pode ir ao final do arquivo e colocar a seguinte linha:
+- fs.file-max = 2147483647
+
+4) Para finalizar pode aplicar as configuraçõoes executando o seguinte código no terminal:
+`sudo sysctl -p`
+
+# 5)CASO O SEU DOCKER NÃO DE ERRO PODE PULAR ESSA PARTE
+
 1. Clone este repositório e acesse o diretório do projeto:
 ```bash
 git clone https://github.com/Kmeliuskas/totvs_protheus2410_docker
