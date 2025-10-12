@@ -4,6 +4,8 @@
 
 Este repositório contém a implementação da aplicação AppServer para ERP TOTVS Protheus utilizando contêineres Docker.
 
+O sistema de ERP Protheus é uma solução de software complexa que requer configurações e dependências específicas para funcionar. Este projeto visa simplificar a instalação, configuração e execução do Protheus ao containerizar o AppServer utilizando Docker.
+
 ### Componentes
 
 Este repositório contém um dos quatro principais componentes:
@@ -26,7 +28,7 @@ Para começar com este projeto, siga os passos abaixo.
 1. Baixe a imagem:
 
     ```bash
-    docker pull matteokme/totvsprotheus2410:appserver2410
+    docker pull juliansantosinfo/totvs_appserver:latest
     ```
 
 2. Criar rede exclusiva para os containeres do projeto, caso inda não exista:
@@ -38,8 +40,12 @@ Para começar com este projeto, siga os passos abaixo.
 3. Executar o container.
 
     ```bash
-    docker run -d --name totvs_appserver --network totvs -p 1234:1234 -p 12345:12345 -p 8088:8088 matteokme/totvsprotheus2410:appserver2410
+    docker run -d --name totvs_appserver --network totvs -p 1234:1234 -p 12345:12345 -p 8088:8088 juliansantosinfo/totvs_appserver:latest
     ```
+
+4. Login.
+
+    Para efetuar login utilize o usuário `admin` se senha `Docker@123`.
 
 ### Build local
 
@@ -48,7 +54,7 @@ Caso queira construir as imagens localmente
 1. Clone o repositório GIT do projeto:
 
     ```bash
-    git clone https://github.com/Kmeliuskas/totvs_protheus2410_docker.git
+    git clone https://github.com/juliansantosinfo/TOTVS-Protheus-in-Docker.git
     ```
 
 2. acesse o diretório appserver`

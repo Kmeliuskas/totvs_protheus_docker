@@ -31,7 +31,7 @@ Para começar com este projeto, siga os passos abaixo.
 1. Baixe a imagem:
 
     ```bash
-    docker pull matteokme/totvsprotheus2410:dbaccess2410
+    docker pull juliansantosinfo/totvs_dbaccess:latest
     ```
 
 2. Criar rede exclusiva para os containeres do projeto, caso inda não exista:
@@ -43,7 +43,7 @@ Para começar com este projeto, siga os passos abaixo.
 3. Executar o container.
 
     ```bash
-    docker run -d --name totvs_dbaccess --network totvs -p 7890:7890 -p 7891:7891 matteokme/totvsprotheus2410:dbaccess2410
+    docker run -d --name totvs_dbaccess --network totvs -p 7890:7890 -p 7891:7891 juliansantosinfo/totvs_dbaccess:latest
     ```
 
 ### Build local
@@ -53,7 +53,7 @@ Caso queira construir as imagens localmente
 1. Clone o repositório GIT do projeto:
 
     ```bash
-    git clone https://github.com/Kmeliuskas/totvs_protheus2410_docker.git
+    git clone https://github.com/juliansantosinfo/TOTVS-Protheus-in-Docker.git
     ```
 
 2. acesse o diretório dbaccess:

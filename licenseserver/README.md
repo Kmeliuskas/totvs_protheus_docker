@@ -4,6 +4,7 @@
 
 Este repositório contém a implementação da aplicação LicenseServer para ERP TOTVS Protheus utilizando contêineres Docker.
 
+O sistema de ERP Protheus é uma solução de software complexa que requer configurações e dependências específicas para funcionar. Este projeto visa simplificar a instalação, configuração e execução do Protheus ao containerizar o LicenseServer utilizando Docker.
 
 ### Componentes
 
@@ -27,7 +28,7 @@ Para começar com este projeto, siga os passos abaixo.
 1. Baixe a imagem:
 
     ```bash
-    docker pull matteokme/totvsprotheus2410:licenseserver2410
+    docker pull juliansantosinfo/totvs_licenseserver:latest
     ```
 
 2. Criar rede exclusiva para os containeres do projeto, caso inda não exista:
@@ -39,7 +40,7 @@ Para começar com este projeto, siga os passos abaixo.
 3. Executar o container.
 
     ```bash
-    docker run -d --name totvs_dbaccess --network totvs -p 5555:5555 -p 2234:2234 -p 8020:8020 --ulimit matteokme/totvsprotheus2410:licenseserver2410
+    docker run -d --name totvs_dbaccess --network totvs -p 5555:5555 -p 2234:2234 -p 8020:8020 --ulimit juliansantosinfo/totvs_licenseserver:latest
     ```
 
 ### Build local
@@ -49,7 +50,7 @@ Caso queira construir as imagens localmente
 1. Clone o repositório GIT do projeto:
 
     ```bash
-    git clone https://github.com/Kmeliuskas/totvs_protheus2410_docker.git
+    git clone https://github.com/juliansantosinfo/TOTVS-Protheus-in-Docker.git
     ```
 
 2. acesse o diretório licenseserver:
