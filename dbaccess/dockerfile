@@ -2,13 +2,13 @@ FROM oraclelinux:8-slim
 
 LABEL version="24.1.0.0"
 LABEL description="TOTVS DBAccess" 
-LABEL maintainer="Julian de Almeida Santos <julian.santos.info@gmail.com>"
+LABEL maintainer="Matteo Kmeliuskas <matteokmeliuskas@gmail.com>"
 
 ENV DATABASE_SERVER=totvs_mssql
 ENV DATABASE_PORT=1433
 ENV DATABASE_ALIAS=protheus
 ENV DATABASE_NAME=protheus
-ENV DATABASE_PASSWORD=MicrosoftSQL2019
+ENV DATABASE_PASSWORD=MicrosoftSQL2022
 ENV DBACCESS_LICENSE_SERVER=totvs_licenseserver
 ENV DBACCESS_LICENSE_PORT=5555
 ENV DBACCESS_CONSOLEFILE=/totvs/dbaccess/multi/dbconsole.log

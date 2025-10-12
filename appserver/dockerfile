@@ -4,7 +4,7 @@ LABEL release="12.1.2410"
 LABEL build="24.3.0.1"
 LABEL dbapi="24.1.0.0"
 LABEL description="TOTVS Aplication Server Protheus" 
-LABEL maintainer="Julian de Almeida Santos <julian.santos.info@gmail.com>"
+LABEL maintainer="Matteo Kmeliuskas <matteokmeliuskas@gmail.com>"
 
 ENV APPSERVER_RPO_CUSTOM="/totvs/protheus/apo/custom.rpo"
 ENV APPSERVER_DBACCESS_DATABASE=MSSQL
