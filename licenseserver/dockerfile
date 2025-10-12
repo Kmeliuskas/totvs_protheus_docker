@@ -1,7 +1,7 @@
 FROM oraclelinux:8-slim
 
-LABEL version="3.7.0"
-LABEL description="TOTVS DBAccess" 
+LABEL version="3.6.2"
+LABEL description="TOTVS License Server" 
 LABEL maintainer="Matteo Kmeliuskas <matteokmeliuskas@gmail.com>"
 
 ENV LICENSE_TCP_PORT=2234
@@ -15,4 +15,4 @@ RUN chmod +x /totvs/entrypoint.sh
 
 ENTRYPOINT [ "/totvs/entrypoint.sh" ]
 
-EXPOSE 2234 4000 5555 8020
+EXPOSE 2234 5555 8020
