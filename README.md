@@ -73,10 +73,16 @@ com as seguintes configurações:
   - **Usuário:** admin
   - **Senha:** Admin@123
 
+E para a release 2410:
+com as seguintes configurações:
+**Release 12.1.2410**
+  - **Usuário:** admin
+  - **Senha:** 123
+
 1. Clone este repositório e acesse o diretório do projeto:
 ```bash
-git clone https://github.com/Kmeliuskas/totvs_protheus2410_docker
-cd totvs_protheus2410_docker
+git clone https://github.com/Kmeliuskas/totvs_protheus_docker
+cd totvs_protheus_docker
 ```
 2. Inicie os containers:
 ```bash
@@ -87,20 +93,18 @@ docker compose -p totvs up -d
  - Nome do servidor: `localhost,1433`
  - Autenticação:     `Autenticação do SQL Server`
  - Logon:            `sa`
- - Senha:            `(SENHA DEVE SER COLOCADA CONFORME CONFIGURADA NO DOCKER-COMPOSE.YAML)`
+ - Senha:            `MicrosoftSQL2022`
  - Criptografia:     `Opcional`
    E marca a box:    `Certificado do Servidor Confiável`
    
-4. Após isso pode criar um banco de dados chamado `protheus`.
-
-5. Após a configuração, acesse a aplicação em seu navegador através do endereço: http://localhost:12345 (Smartclient Web).
+4. Após a configuração, acesse a aplicação em seu navegador através do endereço: http://localhost:12345 (Smartclient Web).
 
 6. Verificar tambem para realizar o download do `Web Agente` localizado no canto superior direito, realize a instalação conforme o seu SO.
 
 7. Utiliza o ambiente SIGACFG e pode proseguir normalmente.
  - Primeiro acesso pode colocar:
    - Login: admin
-   - Senha: ' ' (Espaçamento em branco)
+   - Senha: 123
 
 8 . Inicie o serviço do APPREST após a criação da empresa Teste pois ele está configurado para inicial manualmente para não ocorrer problemas.
 ```bash
