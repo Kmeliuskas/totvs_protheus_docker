@@ -1,7 +1,7 @@
-# Imagem base oficial do SQL Server 2022
-FROM mcr.microsoft.com/mssql/server:2022-latest
+# Imagem base oficial do SQL Server 2019
+FROM mcr.microsoft.com/mssql/server:2019-CU32-GDR3-ubuntu-20.04
 
-LABEL version="12.1.2410"
+LABEL version="12.1.2510"
 LABEL description="TOTVS MSSQL" 
 LABEL maintainer="Matteo Kmeliuskas <matteokmeliuskas@gmail.com>"
 
@@ -9,7 +9,7 @@ USER root
 
 # Variáveis obrigatórias de configuração do SQL Server
 ENV ACCEPT_EULA=Y
-ENV MSSQL_SA_PASSWORD=MicrosoftSQL2022
+ENV MSSQL_SA_PASSWORD=MicrosoftSQL2019
 
 # Copiar o backup compactado para dentro da imagem
 COPY data.tar.gz /tmp/data.tar.gz

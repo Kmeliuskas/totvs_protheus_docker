@@ -23,7 +23,7 @@ fi
 # Verifica o valor da variável booleana
 if [ $resources_exists=false ]; then
   # Se o arquivo de dados existe, executa o comando docker build
-  docker build --no-cache --progress=plain -t matteokme/totvsprotheus2410:sqlserver2022 .
+  docker build --no-cache --progress=plain -t matteokme/totvsprotheus2510:sqlserver2019 .
 else
   # Se o arquivo não existe, exibe uma mensagem de erro
   echo "O arquivo de dados não foi encontrado."

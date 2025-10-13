@@ -1,4 +1,3 @@
-version: '3'  # Adicione a versão, se não estiver especificada
 networks:
   network:
     ipam:
@@ -8,17 +7,18 @@ networks:
           gateway: "172.19.0.1"
 
 services:
+
   mssql:
-    image: matteokme/totvsprotheus2410:sqlserver2022
+    image: matteokme/totvsprotheus2510:sqlserver2019
     container_name: totvs_mssql
     user: root
     restart: always
     ports:
       - "1433:1433"
     environment:
-      # - MSSQL_SA_PASSWORD=MicrosoftSQL2022  --ESSAS VARIAVEIS GLOBAIS NÃO ALTERAR QUE JÁ VEM SETADO DO BANCO COM ESSAS VARIAVEIS
-      # - ACCEPT_EULA=Y --ESSAS VARIAVEIS GLOBAIS NÃO ALTERAR QUE JÁ VEM SETADO DO BANCO COM ESSAS VARIAVEIS
-      - TZ=America/Sao_Paulo  # Adiciona o fuso horário
+      SA_PASSWORD: "MicrosoftSQL2019"
+      ACCEPT_EULA: "Y"
+      TZ: "America/Sao_Paulo"  # Adiciona o fuso horário
     networks:
       - network
     volumes:
@@ -26,7 +26,7 @@ services:
       - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
 
   licenseserver:
-    image: matteokme/totvsprotheus2410:licenseserver2410
+    image: matteokme/totvsprotheus2510:licenseserver2510
     container_name: totvs_licenseserver
     build:
       context: ./licenseserver
@@ -48,7 +48,7 @@ services:
       - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
 
   dbaccess:
-    image: matteokme/totvsprotheus2410:dbaccess2410
+    image: matteokme/totvsprotheus2510:dbaccess2510
     container_name: totvs_dbaccess
     build:
       context: ./dbaccess
@@ -58,7 +58,7 @@ services:
       - "7890:7890"
       - "7891:7891"
     environment:
-      - DATABASE_PASSWORD=MicrosoftSQL2022  #NÃO ALTERAR POIS ESSA VARIAVEL VEEM SETADA DIRETAMENTE DAS CONFIGURAÇÕES DO BANCO
+      - DATABASE_PASSWORD=MicrosoftSQL2019
       - DBACCESS_LICENSE_SERVER=totvs_licenseserver
       - DBACCESS_LICENSE_PORT=5555
       - DBACCESS_CONSOLEFILE=/totvs/dbaccess/multi/dbconsole.log
@@ -72,7 +72,7 @@ services:
       - licenseserver
 
   appserver:
-    image: matteokme/totvsprotheus2410:appserver2410
+    image: matteokme/totvsprotheus2510:appserver2510
     container_name: totvs_appserver
     build:
       context: ./appserver
@@ -83,7 +83,7 @@ services:
       - "12345:12345"
       - "8088:8088"
     environment:
-      - APPSERVER_RPO_CUSTOM=/totvs/protheus/apo/custom/custom.rpo
+      - APPSERVER_RPO_CUSTOM=/totvs/protheus/apo/custom.rpo
       - APPSERVER_DBACCESS_DATABASE=MSSQL
       - APPSERVER_DBACCESS_SERVER=totvs_dbaccess
       - APPSERVER_DBACCESS_PORT=7890
@@ -103,12 +103,19 @@ services:
       - ./volume/appserver/apo:/totvs/protheus/apo
       - ./volume/protheus_data:/totvs/protheus_data
       - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
+    # volumes:
+      # Para utilizar arquivos personalizados de configuração (appserver.ini) e log (appserver.log), 
+      # crie os diretórios e arquivos necessários e descomente as linhas abaixo.
+      # - ./volume/2510/appserver/appserver.ini:/totvs/protheus/bin/appserver/appserver.ini
+      # - ./volume/2510/appserver/appserver.log:/totvs/protheus/bin/appserver/appserver.log
+      # - ./volume/2510/appserver/apo:/totvs/protheus/apo
+      # - ./volume/2510/protheus_data:/totvs/protheus_data
     depends_on:
       - licenseserver
       - dbaccess
 
   apprest:
-    image: matteokme/totvsprotheus2410:apprest2410
+    image: matteokme/totvsprotheus2510:apprest2510
     container_name: totvs_apprest
     build:
       context: ./apprest
@@ -122,7 +129,7 @@ services:
       - "8080:8080"
       - "8089:8088"
     environment:
-      - APPSERVER_RPO_CUSTOM=/totvs/protheus/apo/custom/custom.rpo
+      - APPSERVER_RPO_CUSTOM=/totvs/protheus/apo/custom.rpo
       - APPSERVER_DBACCESS_DATABASE=MSSQL
       - APPSERVER_DBACCESS_SERVER=totvs_dbaccess
       - APPSERVER_DBACCESS_PORT=7890
@@ -143,6 +150,13 @@ services:
       - ./volume/apprest/apo:/totvs/protheus/apo
       - ./volume/protheus_data:/totvs/protheus_data
       - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
+    # volumes:
+      # Para utilizar arquivos personalizados de configuração (appserver.ini) e log (appserver.log), 
+      # crie os diretórios e arquivos necessários e descomente as linhas abaixo.
+      # - ./volume/2510/appserver/appserver.ini:/totvs/protheus/bin/appserver/appserver.ini
+      # - ./volume/2510/appserver/appserver.log:/totvs/protheus/bin/appserver/appserver.log
+      # - ./volume/2510/appserver/apo:/totvs/protheus/apo
+      # - ./volume/2510/protheus_data:/totvs/protheus_data
     depends_on:
       - licenseserver
       - dbaccess
