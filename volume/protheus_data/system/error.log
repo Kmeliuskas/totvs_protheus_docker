@@ -154,3 +154,19 @@ Application Server is Shutting Down. on FWLSMANAGERPULSE(FWLICENSEPULSEMANAGER.P
 [remark: [KILL] [APPKILL] [TERM] ]
 [threadtype: IPCJobThread]
 
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([59], LSPULSE, THIS)   15/10/2025   15:43:27
+Application Server is Shutting Down. on FWLSMANAGERPULSE(FWLICENSEPULSEMANAGER.PRW) 06/10/2025 16:18:46
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 59]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: [KILL] [APPKILL] [TERM] ]
+[threadtype: IPCJobThread]
+

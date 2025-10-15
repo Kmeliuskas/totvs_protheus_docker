@@ -72,7 +72,7 @@ services:
       - licenseserver
 
   appserver:
-    image: matteokme/totvsprotheus2410:appserver2410V3
+    image: matteokme/totvsprotheus2410:appserver2410V4
     container_name: totvs_appserver
     build:
       context: ./appserver
