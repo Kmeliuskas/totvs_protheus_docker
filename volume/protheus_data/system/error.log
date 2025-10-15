@@ -1,0 +1,156 @@
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([59], LSPULSE, THIS)   14/10/2025   17:36:19
+Application Server is Shutting Down. on FWLSMANAGERPULSE(FWLICENSEPULSEMANAGER.PRW) 03/10/2024 14:22:27
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 59]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: [KILL] [APPKILL] [TERM] ]
+[threadtype: IPCJobThread]
+
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([118], _, 5510aa54e161)   14/10/2025   17:36:19
+Application Server is Shutting Down. on MPNEWSUPDATE(FWNEWSLETTER.PRW) 03/10/2024 14:22:35
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 118]
+[dbthread: 63]
+[dbversion: 24.1.1.0]
+[dbapibuild: 20240224-20250929]
+[dbapiversion: 24.1.1.0]
+[dbarch: 64]
+[dbso: LINUX]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: [KILL] [APPKILL] [TERM] ]
+[threadtype: JobThread]
+
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([344], LSPULSE, THIS)   14/10/2025   17:58:21
+Connection terminated by the administrator. on FWLSMANAGERPULSE(FWLICENSEPULSEMANAGER.PRW) 03/10/2024 14:22:27
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 344]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: [KILL] [APPKILL] [TERM] ]
+[threadtype: IPCJobThread]
+
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([875], LSPULSE, THIS)   15/10/2025   08:13:21
+Connection terminated by the administrator. on FWLSMANAGERPULSE(FWLICENSEPULSEMANAGER.PRW) 03/10/2024 14:22:27
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 875]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: [KILL] [APPKILL] [TERM] ]
+[threadtype: IPCJobThread]
+
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([11130], totvstec, totvs)   15/10/2025   08:29:18
+Application Server is Shutting Down. on ERRORSYS(APLIB240.PRW) 06/10/2025 16:18:46
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 11130]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: ]
+[threadtype: JobThread]
+
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([11235], LSPULSE, THIS)   15/10/2025   08:38:40
+Application Server is Shutting Down. on FWLSMANAGERPULSE(FWLICENSEPULSEMANAGER.PRW) 06/10/2025 16:18:46
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 11235]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: [KILL] [APPKILL] [TERM] ]
+[threadtype: IPCJobThread]
+
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([11294], _, 5510aa54e161)   15/10/2025   08:38:41
+Application Server is Shutting Down. on MPNEWSUPDATE(FWNEWSLETTER.PRW) 06/10/2025 16:18:51
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 11294]
+[dbthread: 133]
+[dbversion: 24.1.1.0]
+[dbapibuild: 20240224-20250929]
+[dbapiversion: 24.1.1.0]
+[dbarch: 64]
+[dbso: LINUX]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: [KILL] [APPKILL] [TERM] ]
+[threadtype: JobThread]
+
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([58], LSPULSE, THIS)   15/10/2025   09:25:00
+Application Server is Shutting Down. on FWLSMANAGERPULSE(FWLICENSEPULSEMANAGER.PRW) 06/10/2025 16:18:46
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 58]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: [KILL] [APPKILL] [TERM] ]
+[threadtype: IPCJobThread]
+
+*************************************************************************
+7.00.240223P-20251003
+THREAD ERROR ([60], LSPULSE, THIS)   15/10/2025   13:42:33
+Application Server is Shutting Down. on FWLSMANAGERPULSE(FWLICENSEPULSEMANAGER.PRW) 06/10/2025 16:18:46
+
+[build: 7.00.240223P-20251003]
+* SVN Revision: 46019
+[platform: x64]
+[appversion: 24.3.1.1]
+[environment: ENVIRONMENT]
+[thread: 60]
+[rpodb: top]
+[localfiles: CTREE]
+[remark: [KILL] [APPKILL] [TERM] ]
+[threadtype: IPCJobThread]
+

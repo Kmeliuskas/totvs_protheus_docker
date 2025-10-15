@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="/app-root/preindex_env_environment/" />
+    <meta charset="utf-8" />
+    <script src="twebchannel.js"></script>
+    <script type="text/javascript">
+        var port = getParam('totvstec_websocket_port');
+        var remoteType = getParam('totvstec_remote_type');
+        var appName = getParam('app_name');
+        const preindexVersion = '5.3.0';
+        var clearStorage = getParam('clear_storage');
+
+        if (port == null) {
+            port = sessionStorage['SocketPort'];
+        } else {
+            sessionStorage['SocketPort'] = port;
+        }
+
+        if (remoteType == null) {
+            remoteType = sessionStorage['RemoteType'];
+        } else {
+            sessionStorage['RemoteType'] = remoteType;
+        }
+        if (appName == null) {
+            appName = sessionStorage['appName'];
+        } else {
+            sessionStorage['appName'] = appName;
+        }
+        if (clearStorage === "1") {
+            sessionStorage.clear();
+        }
+        if (port == null || remoteType == null) {
+            console.log('Loading without twebchannel connection.');
+            reIndex(appName);
+        } else {
+            if (appName) {
+                appFunctions(appName);
+            }
+
+            twebchannel.advplToJs = function (codeType, codeContent, objectName) {
+                if (codeType == 'fw_setToken') {
+                    sessionStorage['TOKEN'] = codeContent;
+                    sessionStorage['ERPTOKEN'] = codeContent;
+                } else if (codeType == 'fw_setAppConfig') {
+                    sessionStorage['ProAppConfig'] = codeContent;
+                    sessionStorage['ERPAPPCONFIG'] = codeContent;
+                } else if (codeType == 'fw_setCompany') {
+                    sessionStorage['ProCompany'] = codeContent;
+                } else if (codeType == 'fw_setBranch') {
+                    sessionStorage['ProBranch'] = codeContent;
+                } else if (codeType == 'fw_setModule') {
+                    sessionStorage['ProModule'] = codeContent;
+                } else if (codeType == 'fw_setIdiom') {
+                    sessionStorage['ProIdiom'] = codeContent;
+                    localStorage.setItem('PO_USER_LOCALE', codeContent);
+                } else if (codeType == 'fw_setDatabase') {
+                    sessionStorage['ProDatabase'] = codeContent;
+                } else if (codeType == 'fw_setTheme') {
+                    localStorage.setItem('ProTheme', codeContent);
+                } else if (codeType == 'fw_indexRedirect') {
+                    reIndex(appName);
+                } else if (this[appName]) {
+                    this[appName](codeType, codeContent, objectName);
+                }
+            };
+
+            twebchannel.connect(function () {
+                twebchannel['getCounter'] = 1;
+                callPreLoad();
+            });
+        }
+
+        function callPreLoad() {
+            if (twebchannel[appName]) {
+                twebchannel.jsToAdvpl('preLoad', preindexVersion);
+            } else {
+                if (twebchannel['getCounter'] <= 99) {
+                    twebchannel['getCounter']++;
+                    setTimeout(function () {
+                        callPreLoad();
+                    }, 50);
+                } else {
+                    console.log('Loading without custom advplToJs feature.');
+                    twebchannel.jsToAdvpl('preLoad', preindexVersion);
+                }
+            }
+        }
+
+        function reIndex(appName) {
+            if (appName) {
+                window.location.replace(
+                    window.location.href.replace(/preindex/i, appName.split('_env_')[0])
+                );
+            } else {
+                console.log('Cannot redirect to undefined!');
+            }
+        }
+
+        function appFunctions(appName) {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    twebchannel[appName] = new Function(
+                        'return (' + xmlhttp.responseText + ')'
+                    )();
+                }
+            };
+            xmlhttp.open(
+                'GET',
+                '/app-root/' + appName + '/assets/preload/advpltojs.js',
+                true
+            );
+            xmlhttp.send();
+        }
+    </script>
+</head>
+
+</html>
