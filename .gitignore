@@ -4,5 +4,5 @@ temp/
 **/data/
 data.tar.gz
 
-#Ignora arquivos de LOG da pasta Volumes
-volume/protheus_data/system/*.log
+#Ignora arquivos Da volumes
+volume/
