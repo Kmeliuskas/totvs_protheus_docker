@@ -1,2 +1,0 @@
-volume/appserver/apo/*.rpo filter=lfs diff=lfs merge=lfs -text
-volume/protheus_data/systemload/*.txt filter=lfs diff=lfs merge=lfs -text

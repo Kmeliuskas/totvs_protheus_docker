@@ -1,4 +1,4 @@
-version: '3'  # Adicione a versão, se não estiver especificada
+version: '3.8'  # Adicione a versão, se não estiver especificada
 networks:
   network:
     ipam:
@@ -53,7 +53,7 @@ services:
         hard: 1048576 #Usado somente para evitar o problema de unlimites -1 que ocorre por causa do Kernel
 
   dbaccess:
-    image: matteokme/totvsprotheus2410:dbaccess2410V3
+    image: matteokme/totvsprotheus2410:dbaccess2410V4
     container_name: totvs_dbaccess
     build:
       context: ./dbaccess
@@ -77,7 +77,7 @@ services:
       - licenseserver
 
   appserver:
-    image: matteokme/totvsprotheus2410:appserver2410V4
+    image: matteokme/totvsprotheus2410:appserver2410V5
     container_name: totvs_appserver
     build:
       context: ./appserver
