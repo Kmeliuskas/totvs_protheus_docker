@@ -2,10 +2,6 @@
 ## Overview
 Este repositório contém a implementação da aplicação do ERP TOTVS Protheus utilizando containers Docker.
 
-## Para facilitar foi criado 2 branchs para os ajuste
-- `release_1.1.2410` -> Para as configurações da 2410 pode seguir corretamente esse README.MD
-- `release_1.1.2510` -> Facilita o acesso, pode acessar somente a url [localhost:12345](http://localhost:12345) e colocar usuário e senha setados nesse README.MD
-
 O sistema de ERP Protheus é uma solução de software complexa que requer configurações e dependências específicas para funcionar. Este projeto visa simplificar a instalação, configuração e execução do Protheus ao containerizar-o utilizando Docker.
 
 ## Componentes
@@ -37,80 +33,28 @@ Mac:
 ## Início Rápido
 Para começar com este projeto, siga os passos abaixo:
 
-## Atenção!!!
-Caso quando for subir os containers e por exemplo o container do LicenserServer ele der um erro no LOG que seria:
-
-Please wait...
-Numero maximo de arquivos insuficiente. Limite atual: -1
-[ERROR][SERVER] OPERATIONAL LIMITS ARE INSUFFICIENT, CHECK THE INSTALATION PROCEDURES AS WELL AS 'ULIMIT' CONFIGURATION
-
-Pode fazer as seguintes configurações:
-1 - Executa o ubuntu da da sua máquina local por exemplo a imagem do Ubunto do Windows WSL
-2 - Vai ser necessário entrar nos seguintes arquivos:
-  - sudo nano /etc/pam.d/common-session
-  - sudo nano /etc/security/limits.conf
-  - sudo nano /etc/sysctl.conf
-
-1)Dentro do `/etc/pam.d/common-session` Pode ir ao final do arquivo e colocar a seguinte linha:
-- session required                        pam_limits.so
-
-2)Dentro do `/etc/security/limits.conf` Pode ir ao final do arquivo e colocar a seguinte linha:
-- *                hard   nofile           1048576
-- *                soft   nofile           1048576
- 
-3)Dentro do `/etc/sysctl.conf` Pode ir ao final do arquivo e colocar a seguinte linha:
-- fs.file-max = 2147483647
-
-4) Para finalizar pode aplicar as configuraçõoes executando o seguinte código no terminal:
-`sudo sysctl -p`
-
-# 5)CASO O SEU DOCKER NÃO DE ERRO PODE PULAR ESSA PARTE
-=======
-## ATENÇÃO
-Caso você esteja usando a release 2510 pode somente acessar o [localhost:12345](http://localhost:12345)
-com as seguintes configurações:
-**Release 12.1.2510**
-  - **Usuário:** admin
-  - **Senha:** Admin@123
-
-E para a release 2410:
-com as seguintes configurações:
-**Release 12.1.2410**
-  - **Usuário:** admin
-  - **Senha:** 123
-
 1. Clone este repositório e acesse o diretório do projeto:
 ```bash
 git clone https://github.com/Kmeliuskas/totvs_protheus_docker
 cd totvs_protheus_docker
+git checkout release_12.1.2410
 ```
 2. Inicie os containers:
 ```bash
 docker compose -p totvs up -d
 ```
-3. Após isso realizar a conexão do banco de dados pode ser com o SQL Server Management Studio 20 com as seguintes opções:
- - Tipo de servidor: `Mecanismo de Banco de Dados`
- - Nome do servidor: `localhost,1433`
- - Autenticação:     `Autenticação do SQL Server`
- - Logon:            `sa`
- - Senha:            `MicrosoftSQL2022`
- - Criptografia:     `Opcional`
-   E marca a box:    `Certificado do Servidor Confiável`
-   
+3. Após isso realizar o primeiro acesso com as seguintes configurações:
+   - **Usuário:** `admin`
+   - **Senha:** `123`
+    
 4. Após a configuração, acesse a aplicação em seu navegador através do endereço: http://localhost:12345 (Smartclient Web).
 
-6. Verificar tambem para realizar o download do `Web Agente` localizado no canto superior direito, realize a instalação conforme o seu SO.
+5. Verificar tambem para realizar o download do `Web Agente` localizado no canto superior direito, realize a instalação conforme o seu SO caso deseja rodar local.
 
-7. Utiliza o ambiente SIGACFG e pode proseguir normalmente.
- - Primeiro acesso pode colocar:
-   - Login: admin
-   - Senha: 123
-
-8 . Inicie o serviço do APPREST após a criação da empresa Teste pois ele está configurado para inicial manualmente para não ocorrer problemas.
+6 . Inicie o serviço do APPREST após a criação da empresa Teste pois ele está configurado para inicial manualmente para não ocorrer problemas.
 ```bash
 docker compose -p totvs --profile manual up -d apprest
 ```
-
 ## Docker Compose
 O arquivo `docker-compose.yml` orquestra os containers e define as variáveis de ambiente, portas e volumes necessários por componente.
 
