@@ -43,12 +43,12 @@ git checkout release_12.1.2410
 ```bash
 docker compose -p totvs up -d
 ```
-3. Após isso realizar o primeiro acesso com as seguintes configurações:
+3. Após a configuração, acesse a aplicação em seu navegador através do endereço: http://localhost:12345 (Smartclient Web).
+
+4. Após isso realizar o primeiro acesso com as seguintes configurações:
    - **Usuário:** `admin`
    - **Senha:** `123`
-    
-4. Após a configuração, acesse a aplicação em seu navegador através do endereço: http://localhost:12345 (Smartclient Web).
-
+  
 5. Verificar tambem para realizar o download do `Web Agente` localizado no canto superior direito, realize a instalação conforme o seu SO caso deseja rodar local.
 
 6 . Inicie o serviço do APPREST após a criação da empresa Teste pois ele está configurado para inicial manualmente para não ocorrer problemas.
