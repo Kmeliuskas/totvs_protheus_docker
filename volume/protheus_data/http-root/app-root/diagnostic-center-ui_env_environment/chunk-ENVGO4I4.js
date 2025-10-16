@@ -1,1 +1,0 @@
-import{Tb as c,o as r,u as i,w as o}from"./chunk-E2TBXAXQ.js";var f=(()=>{class t{constructor(e){this.poI18nService=e}getLiterals(e){return this.poI18nService.getLiterals({context:e}).pipe(r(1))}static{this.\u0275fac=function(n){return new(n||t)(o(c))}}static{this.\u0275prov=i({token:t,factory:t.\u0275fac,providedIn:"root"})}}return t})();export{f as a};
