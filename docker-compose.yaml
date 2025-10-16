@@ -1,3 +1,4 @@
+version: '3.8'  # Adicione a versão, se não estiver especificada
 networks:
   network:
     ipam:
@@ -32,6 +33,7 @@ services:
       context: ./licenseserver
       dockerfile: dockerfile
     restart: always
+    privileged: true  #Usado somente para evitar o problema de unlimites -1 que ocorre por causa do Kernel
     ports:
       - "2234:2234"
       - "5555:5555"
@@ -46,6 +48,10 @@ services:
       - network
     volumes:
       - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
+    ulimits:  #Usado somente para evitar o problema de unlimites -1 que ocorre por causa do Kernel
+      nofile: #Usado somente para evitar o problema de unlimites -1 que ocorre por causa do Kernel
+        soft: 1048576 #Usado somente para evitar o problema de unlimites -1 que ocorre por causa do Kernel
+        hard: 1048576 #Usado somente para evitar o problema de unlimites -1 que ocorre por causa do Kernel
 
   dbaccess:
     image: matteokme/totvsprotheus2510:dbaccess2510
