@@ -107,6 +107,7 @@ services:
     volumes:
       - ./volume/appserver/apo:/totvs/protheus/apo
       - ./volume/protheus_data:/totvs/protheus_data
+      #- ./volume/protheus_data/systemload
       - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
     depends_on:
       - licenseserver
@@ -147,6 +148,7 @@ services:
     volumes:
       - ./volume/apprest/apo:/totvs/protheus/apo
       - ./volume/protheus_data:/totvs/protheus_data
+      #- ./volume/protheus_data/systemload
       - /etc/localtime:/etc/localtime:ro  # Monta o fuso horário do host
     depends_on:
       - licenseserver
